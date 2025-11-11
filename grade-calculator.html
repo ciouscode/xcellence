@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade Calculator</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #bde0fe, #ccb3da, #fec7dc);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .grade-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 25px;
+    padding: 25px;
+    width: 500px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    backdrop-filter: blur(6px);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  th, td {
+    padding: 12px;
+    text-align: center;
+    border-radius: 15px;
+  }
+
+  th {
+    background-color: #ccb3da;
+    color: white;
+    border-radius: 15px;
+  }
+
+  td {
+    background-color: #fef9ff;
+  }
+
+  td input {
+    width: 80px;
+    text-align: center;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #bde0fe;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  td input:focus {
+    outline: none;
+    background-color: #fec7dc;
+  }
+
+  .subject-input {
+    width: 160px;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+
+  .add-subject {
+    margin-top: 15px;
+    background-color: #fec7dc;
+    color: #333;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .add-subject:hover {
+    background-color: #ccb3da;
+    color: white;
+  }
+
+  tfoot td {
+    font-weight: bold;
+    background-color: #ccb3da;
+    color: white;
+    border-radius: 15px;
+  }
+
+  #average {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  #average.pass {
+    color: #3ca374;
+  }
+
+  #average.fail {
+    color: #d9534f;
+  }
+</style>
+</head>
+<body>
+  <div class="grade-card">
+    <table id="gradeTable">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><input class="subject-input" value="Filipino"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="English"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="Math"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="Science"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="Social Science"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="Values Ed"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="Chinese"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="MAPEH"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="MusArt"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="Peah"></td><td><input type="number" class="grade"></td></tr>
+        <tr><td><input class="subject-input" value="TLE"></td><td><input type="number" class="grade"></td></tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Final Average</td>
+          <td id="average">—</td>
+        </tr>
+      </tfoot>
+    </table>
+    <button class="add-subject" onclick="addSubject()">+ Add Subject</button>
+  </div>
+
+<script>
+function calculateAverage() {
+  const rows = document.querySelectorAll("#gradeTable tbody tr");
+  let total = 0;
+  let count = 0;
+
+  rows.forEach(row => {
+    const gradeInput = row.querySelector(".grade");
+    const val = parseFloat(gradeInput.value);
+    if (!isNaN(val)) {
+      total += val;
+      count++;
+    }
+  });
+
+  const avgCell = document.getElementById("average");
+  if (count > 0) {
+    const avg = (total / count).toFixed(2);
+    avgCell.textContent = avg;
+    avgCell.className = (avg >= 75) ? "pass" : "fail";
+  } else {
+    avgCell.textContent = "—";
+    avgCell.className = "";
+  }
+}
+
+function addSubject() {
+  const tbody = document.querySelector("#gradeTable tbody");
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td><input class="subject-input" placeholder="New Subject"></td>
+    <td><input type="number" class="grade"></td>
+  `;
+  tbody.appendChild(row);
+  row.querySelector(".grade").addEventListener("input", calculateAverage);
+}
+
+document.querySelectorAll(".grade").forEach(input => 
+  input.addEventListener("input", calculateAverage)
+);
+</script>
+</body>
+</html>
