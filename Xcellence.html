@@ -14,11 +14,13 @@ body{background:linear-gradient(to bottom,#b3e5fc 0%,#f8bbd0 45%,#fff 85%);color
 .navbar:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .navbar.dashboard-active{background:#000!important;color:#fff!important;}
 .navbar.dashboard-active a{color:#fff!important;}
+  
 .logo .star{font-size:30px;margin-left:10px;animation:spin 2s linear infinite;opacity:1}
 @keyframes spin{0%{transform:rotate(0)scale(1);opacity:1}25%{transform:rotate(90deg)scale(1.05);opacity:.8}50%{transform:rotate(180deg)scale(1);opacity:.6}75%{transform:rotate(270deg)scale(1.05);opacity:.8}100%{transform:rotate(360deg)scale(1);opacity:1}}
 .nav-links{list-style:none;display:flex;gap:28px}
 .nav-links a{color:inherit;font-weight:600;font-size:16px;text-decoration:none;transition:color .3s,transform .25s}
 .nav-links a:hover{transform:scale(1.05);opacity:.8}
+  
 .hero{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:60px;min-height:50vh;animation:fadeInUp 1s ease both}
 .hero-text{max-width:55%}
 .hero-text h1{font-size:4rem;margin-bottom:10px;transition:transform .3s}
@@ -27,33 +29,39 @@ body{background:linear-gradient(to bottom,#b3e5fc 0%,#f8bbd0 45%,#fff 85%);color
 .hero-img{max-width:35%;transition:transform .6s,opacity .6s;animation:fadeInRight 1s ease both .5s}
 .hero-img img{width:100%;height:auto;display:block;transition:transform .5s}
 .hero-img img:hover{transform:scale(1.05)}
+  
 .about-hidden{max-height:0;opacity:0;transform:translateY(-12px);overflow:hidden;transition:max-height 1s cubic-bezier(.19,1,.22,1),opacity .8s,transform .8s;background:linear-gradient(to bottom,#fff 0%,#f3e8ff 40%,#fff 100%);padding:0 20px}
 .about-hidden.active{max-height:1000px;opacity:1;transform:translateY(0);padding:40px 20px 60px}
 .about-inner{max-width:900px;margin:auto;text-align:center}
 .about-inner h2{font-size:2.6rem;margin-bottom:20px;letter-spacing:1px;animation:fadeIn 1s ease both}
 .about-inner p{font-size:1.05rem;line-height:1.6;color:#111;margin-bottom:12px;animation:fadeIn 1s ease both .3s}
+  
 .contact{text-align:center;padding:64px 20px;background:linear-gradient(to top,#f3f3ff,#fff);animation:fadeInUp 1s ease both}
 .contact h2{font-size:2.3rem;margin-bottom:30px;text-transform:uppercase;letter-spacing:1px}
 .contact-container{display:flex;justify-content:center;flex-wrap:wrap;gap:36px}
 .contact-card{width:260px;background:#fff;border-radius:14px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform .4s,box-shadow .4s;animation:fadeIn 1s ease both}
 .contact-card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.09)}
+  
 .name{padding:6px 14px;border-radius:6px;color:#fff;font-weight:700;font-size:.95rem}
 .blue{background:#6ea0c9}.pink{background:#c77b8b}.purple{background:#9b8fc2}
 .icons{display:flex;gap:14px;justify-content:center}
 .icons a{display:inline-flex;width:48px;height:48px;border-radius:50%;border:2px solid #111;align-items:center;justify-content:center;color:#111;font-size:18px;text-decoration:none;transition:.3s;background:transparent}
 .icons a:hover{transform:scale(1.12);background:rgba(0,0,0,.05);box-shadow:0 0 10px rgba(0,0,0,.15)}
+
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:2000}
 .modal-overlay.active{opacity:1;pointer-events:auto;animation:fadeIn .5s ease both}
 .modal-content{background:#fff;border-radius:12px;max-width:600px;width:90%;padding:30px 25px;text-align:center;transform:scale(.85) translateY(-20px);transition:transform .45s cubic-bezier(.22,.9,.27,1),opacity .45s;opacity:0}
 .modal-overlay.active .modal-content{transform:scale(1) translateY(0);opacity:1;animation:fadeInUp .7s ease both}
 .modal-content h2{color:red;font-size:1.8rem;margin-bottom:16px;font-weight:800;text-decoration:underline}
 .modal-content p{text-align:justify;line-height:1.5;margin-bottom:16px;color:#111}
+
 .continue-btn{background:#b3e5fc;border:none;padding:12px 26px;border-radius:6px;font-weight:700;cursor:pointer;transition:.3s;color:#111}
 .continue-btn:hover{background:#81d4fa;transform:scale(1.05)}
 .dashboard-overlay{position:fixed;inset:0;background:#fff;display:none;align-items:center;justify-content:center;z-index:3000;animation:fadeIn .6s ease both}
 .dashboard-box{background:#fff;padding:40px;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.15);display:flex;flex-direction:column;gap:24px;text-align:center;min-width:260px;animation:fadeInUp 1s ease both}
 .dashboard-box button{padding:14px 22px;font-size:1rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:.3s;background:#6ea0c9;color:#fff}
 .dashboard-box button:hover{background:#5580a0;transform:scale(1.05)}
+
 @keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
 @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
 @keyframes fadeInRight{0%{opacity:0;transform:translateX(40px)}100%{opacity:1;transform:translateX(0)}}
@@ -236,3 +244,4 @@ function resetHome(){
 </script>
 </body>
 </html>
+
